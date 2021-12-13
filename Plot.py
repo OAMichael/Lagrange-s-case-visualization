@@ -22,9 +22,9 @@ def switch_demo(argument):
 # switcher for plot title
 def switch_Plot_Title(argument):
     switcher = {
-        "Phi": r'График зависимости $\phi$ от t',           "phi": r'График зависимости $\phi$ от t',
-        "Psi": r'График зависимости $\psi$ от t',           "psi": r'График зависимости $\psi$ от t',
-        "Theta": r'График зависимости $\theta$ от t',       "theta": r'График зависимости $\theta$ от t',
+        "Phi": r'График зависимости $\varphi$ от t',    "phi": r'График зависимости $\varphi$ от t',
+        "Psi": r'График зависимости $\psi$ от t',       "psi": r'График зависимости $\psi$ от t',
+        "Theta": r'График зависимости $\theta$ от t',   "theta": r'График зависимости $\theta$ от t',
         "p": r'График зависимости $\omega_1$ от t',     "P": r'График зависимости $\omega_1$ от t',
         "q": r'График зависимости $\omega_2$ от t',     "Q": r'График зависимости $\omega_2$ от t',
         "r": r'График зависимости $\omega_3$ от t',     "R": r'График зависимости $\omega_3$ от t'
@@ -34,12 +34,12 @@ def switch_Plot_Title(argument):
 # switcher for y label
 def switch_ylabel(argument):
     switcher = {
-        "Phi": r'$\phi$',       "phi": r'$\phi$',
+        "Phi": r'$\varphi$',    "phi": r'$\varphi$',
         "Psi": r'$\psi$',       "psi": r'$\psi$',
         "Theta": r'$\theta$',   "theta": r'$\theta$',
-        "p": r'$\omega_1$', "P": r'$\omega_1$',
-        "q": r'$\omega_2$', "Q": r'$\omega_2$',
-        "r": r'$\omega_3$', "R": r'$\omega_3$'
+        "p": r'$\omega_1$',     "P": r'$\omega_1$',
+        "q": r'$\omega_2$',     "Q": r'$\omega_2$',
+        "r": r'$\omega_3$',     "R": r'$\omega_3$'
     }
     return switcher.get(argument, "default")
 
@@ -102,7 +102,9 @@ if __name__ == "__main__":
             repeat = True # зацикливать ли анимацию
         )
 
-        ax.grid(color = 'grey', linewidth = 1, linestyle = '--', alpha = 0.75)
+        ax.minorticks_on()
+        ax.grid(which = 'major', color = 'black', linewidth = 1, linestyle = '-', alpha = 0.75)
+        ax.grid(which = 'minor', color = 'grey', linewidth = 1, linestyle = '--', alpha = 0.5)
         plt.title(PlotTitle)
         plt.xlabel('time')
         plt.ylabel(YLable)
