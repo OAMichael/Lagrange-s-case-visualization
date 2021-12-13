@@ -520,13 +520,13 @@ void Timer(int)
     // Using Euler method
     //State = State + dt * F(State);
 
-    if(WriteCount % 100 == 99)
-    {
+    //if(WriteCount % 100 == 99)
+    //{
         std::ofstream Data;
         Data.open("data.txt", std::ios::app | std::ios::out);
         Data << Time << " " << State.theta << " " << State.psi << " " << State.phi << " " << State.p << " " << State.q << " " << State.r << std::endl;
         Data.close();
-    }
+    //}
     ++WriteCount;
 
     std::cout << "State:\n" << State;
