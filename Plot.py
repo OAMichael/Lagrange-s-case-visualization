@@ -10,9 +10,9 @@ from matplotlib.animation import FuncAnimation
 # switcher for comand line argument
 def switch_demo(argument):
     switcher = {
-        "Phi": 1,   "phi": 1,
+        "Theta": 1, "theta": 1,
         "Psi": 2,   "psi": 2,
-        "Theta": 3, "theta": 3,
+        "Phi": 3,   "phi": 3,
         "p": 4,     "P": 4,
         "q": 5,     "Q": 5,
         "r": 6,     "R": 6
@@ -47,6 +47,7 @@ def switch_ylabel(argument):
 if len(argv) != 2:
     print ("Invalid amount of argv\n")
     exit(1)
+print(argv[0])
 
 # select the displayed parameter
 param_num = switch_demo(argv[1])

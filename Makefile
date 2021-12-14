@@ -1,9 +1,10 @@
 CC = g++
-
 CFLAGS = -O3 -Wall 
 
-all: OpenGL
+all: OpenGL test
 
-OpenGL: 
+test: test.c
+	$(CC) $(CFLAGS) test.c -o test
+
+OpenGL: OpenGL.cpp
 	$(CC) $(CFLAGS) OpenGL.cpp -lGL -lglut -o OpenGL.exe
-
