@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
     int params_amount = 0;
     
     // Obtaining requested parameters
-    printf("What parametres would you like to see graphed?\n");
+    printf("What quantities would you like to see graphed?\n");
     if (read(fileno(stdin), ans, sizeof("psi, phi, theta, p, q, r")) == -1) {
         perror("read()");
         return -1;
