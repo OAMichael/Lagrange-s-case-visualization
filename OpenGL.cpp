@@ -375,8 +375,8 @@ void display(void)
 
     glColor3f(1, 0, 0);
     
-    glPointSize(3);
-    glBegin(GL_POINTS);
+    glLineWidth(3);
+    glBegin(GL_LINE_STRIP);
         for(VecIter Iter = Trace.begin(), IterEnd = Trace.end(); Iter != IterEnd; ++Iter)
             glVertex3f((*Iter).x, (*Iter).y, (*Iter).z);
 
