@@ -39,3 +39,4 @@ $ ./<filename>.py <args>
 #!/usr/bin/env python3
 ```
 
+![hippo](https://github.com/OAMichael/Lagrange-s-case-visualization/blob/master/images/p(t).gif)
