@@ -39,6 +39,6 @@ $ ./<filename>.py <args>
 #!/usr/bin/env python3
 ```
 
-<!-- <p align="center">
-    <img src="" alt="caption" width="300"/>
-</p> -->
+<p align="center">
+    <img src="https://github.com/OAMichael/Lagrange-s-case-visualization/blob/master/images/p(t).gif" alt="caption" width="300"/>
+</p>
