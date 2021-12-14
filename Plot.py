@@ -34,12 +34,12 @@ def switch_Plot_Title(argument):
 # switcher for y label
 def switch_ylabel(argument):
     switcher = {
-        "Phi": r'$\varphi$',    "phi": r'$\varphi$',
-        "Psi": r'$\psi$',       "psi": r'$\psi$',
-        "Theta": r'$\theta$',   "theta": r'$\theta$',
-        "p": r'$\omega_1$',     "P": r'$\omega_1$',
-        "q": r'$\omega_2$',     "Q": r'$\omega_2$',
-        "r": r'$\omega_3$',     "R": r'$\omega_3$'
+        "Phi"  : r'$\varphi$, rad',        "phi"  : r'$\varphi$, rad',
+        "Psi"  : r'$\psi$, rad',           "psi"  : r'$\psi$, rad',
+        "Theta": r'$\theta$, rad',         "theta": r'$\theta$, rad',
+        "p"    : r'$\omega_1$, rad/s',     "P"    : r'$\omega_1$, rad/s',
+        "q"    : r'$\omega_2$, rad/s',     "Q"    : r'$\omega_2$, rad/s',
+        "r"    : r'$\omega_3$, rad/s',     "R"    : r'$\omega_3$, rad/s'
     }
     return switcher.get(argument, "default")
 
@@ -107,7 +107,7 @@ if __name__ == "__main__":
         ax.grid(which = 'major', color = 'black', linewidth = 1, linestyle = '-', alpha = 0.75)
         ax.grid(which = 'minor', color = 'grey', linewidth = 1, linestyle = '--', alpha = 0.5)
         plt.title(PlotTitle)
-        plt.xlabel('time')
+        plt.xlabel('time, sec')
         plt.ylabel(YLable)
         plt.show()
     except KeyboardInterrupt:
