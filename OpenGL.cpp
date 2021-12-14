@@ -522,7 +522,7 @@ void Timer(int)
     //State = State + dt * F(State);
 
     std::ofstream Data;
-    Data.open("data.txt", std::ios::app | std::ios::out);
+    Data.open("data.dat", std::ios::app | std::ios::out);
     Data << Time << " " << State.theta << " " << State.psi << " " << State.phi << " " << State.p << " " << State.q << " " << State.r << std::endl;
     Data.close();
 
@@ -596,7 +596,7 @@ void AssignInitials(int argc, char* argv[])
     State.r = psi_dot_0 * cos(theta_0) + phi_dot_0;
 
     std::ofstream Data0;
-    Data0.open("data.txt", std::ios::trunc | std::ios::out);
+    Data0.open("data.dat", std::ios::trunc | std::ios::out);
     Data0 << Time << " " << State.theta << " " << State.psi << " " << State.phi << " " << State.p << " " << State.q << " " << State.r << std::endl;
     Data0.close();
 

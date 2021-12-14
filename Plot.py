@@ -63,10 +63,10 @@ npoints = 250
 time = deque([0], maxlen=npoints)
 param = deque([0], maxlen=npoints)
 fig, ax = plt.subplots()
-[line] = ax.step(time, param)
+line, = ax.plot([], [], lw=2)
 
 # open data file
-file = open('data.txt', 'r')
+file = open('data.dat', 'r')
 
 # function for anomation -- give chosen parametr from data file
 def GiveParam():
