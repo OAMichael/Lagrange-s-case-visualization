@@ -39,6 +39,28 @@ $ ./<filename>.py <args>
 #!/usr/bin/env python3
 ```
 
+## Visualisation
+
+<p align="center">
+    <img src="https://github.com/OAMichael/Lagrange-s-case-visualization/blob/master/images/visualization.gif" alt="caption" width="300"/>
+</p>
+
+<p align="center">
+    <img src="https://github.com/OAMichael/Lagrange-s-case-visualization/blob/master/images/phi(t).gif" alt="caption" width="300"/>
+</p>
+
+<p align="center">
+    <img src="https://github.com/OAMichael/Lagrange-s-case-visualization/blob/master/images/psi(t).gif" alt="caption" width="300"/>
+</p>
+
+<p align="center">
+    <img src="https://github.com/OAMichael/Lagrange-s-case-visualization/blob/master/images/theta(t).gif" alt="caption" width="300"/>
+</p>
+
 <p align="center">
     <img src="https://github.com/OAMichael/Lagrange-s-case-visualization/blob/master/images/p(t).gif" alt="caption" width="300"/>
+</p>
+
+<p align="center">
+    <img src="https://github.com/OAMichael/Lagrange-s-case-visualization/blob/master/images/q(t).gif" alt="caption" width="300"/>
 </p>
