@@ -36,11 +36,11 @@ int main(int argc, char* argv[]) {
     double psi_dot_0 = 0.75;
     double phi_dot_0 = 0.75;
 
-    char choise[1] = "";
+    char choise;
     printf("Would you like to input rigid body parameters? Y/N\n");
-    if (scanf("%s", choise) == 0) { perror("scanf()"); return -1; };
+    if (scanf("%c", &choise) == 0) { perror("scanf()"); return -1; };
 
-    if (!strcmp(choise, "y") || !strcmp(choise, "Y")) {
+    if (choise == 'y' || choise == 'Y') {
         printf("Input paramets:\n"); 
 
         printf("M: ");           if (scanf("%lf", &M) == 0)           { perror("scanf()"); return -1; };
@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
         printf("psi_dot_0: ");   if (scanf("%lf", &psi_dot_0) == 0)   { perror("scanf()"); return -1; };
         printf("phi_dot_0: ");   if (scanf("%lf", &phi_dot_0) == 0)   { perror("scanf()"); return -1; };
     }
-    else if (!strcmp(choise, "n") || !strcmp(choise, "N")) {
+    else if (choise == 'n' || choise == 'N') {
         printf("Default parameters\n");
     }
     else {
@@ -125,7 +125,7 @@ int main(int argc, char* argv[]) {
         case 0: /* child */
         {
             // For body parameters
-            if(!strcmp(choise, "Y") || !strcmp(choise, "y"))
+            if(choise == 'y' || choise == 'Y')
             {
                 char* tmp_buf[10];
 
