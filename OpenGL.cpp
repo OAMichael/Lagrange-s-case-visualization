@@ -15,6 +15,7 @@
 #define KEY_ESCAPE 27
 #define KEY_SPACE  32
 
+//#define DEBUG
 
 struct Color {
     GLdouble r;
@@ -105,7 +106,10 @@ const PhaseVector operator*(const GLdouble& k, const PhaseVector& a)
 std::ostream& operator<<(std::ostream& out, const PhaseVector& Vec) 
 {
     std::cout << "theta = " << Vec.theta << "\npsi = " << Vec.psi << "\nphi = " << Vec.phi <<
-                 "\np = " << Vec.p << "\nq = " << Vec.q << "\nr = " << Vec.r << "\n\n";
+                 "\ntheta_dot = " << Vec.p * cos(Vec.phi) - Vec.q * sin(Vec.phi) <<
+                 "\npsi_dot = " << (Vec.p * sin(Vec.phi) + Vec.q * cos(Vec.phi)) / sin(Vec.theta) <<
+                 "\nphi_dot = " << Vec.r - (Vec.p * sin(Vec.phi) + Vec.q * cos(Vec.phi)) / sin(Vec.theta) * cos(Vec.theta) <<
+                 "\np = " << Vec.p << "\nq = " << Vec.q << "\nr = " << Vec.r << "\n";
 
     return out;
 }
@@ -522,8 +526,9 @@ void Timer(int)
     Data << Time << " " << State.theta << " " << State.psi << " " << State.phi << " " << State.p << " " << State.q << " " << State.r << std::endl;
     Data.close();
 
+    #ifdef DEBUG
     std::cout << "State:\n" << State;
-
+    #endif
 //==========================================================================================================================
 
 
@@ -594,6 +599,8 @@ void AssignInitials(int argc, char* argv[])
     Data0.open("data.txt", std::ios::trunc | std::ios::out);
     Data0 << Time << " " << State.theta << " " << State.psi << " " << State.phi << " " << State.p << " " << State.q << " " << State.r << std::endl;
     Data0.close();
+
+    std::cout << "\nState:\n" << State;
 
     return;
 }
