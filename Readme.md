@@ -1,13 +1,27 @@
-# Readme
+# Lagrange's case
 
 ### This repository created by [Pavel Filippenko](https://github.com/pavel-collab) and [Mikhail Ovsiannikov](https://github.com/OAMichael).
 
-### Our tasks this moment.
-- [ ] сдеать flock в c++ файле
-- [ ] по максимуму синхронизавать исполнение основного файла и .py файла
-- [ ] в файле test добавить корректное завершение дочерних процессов
-- [ ] в файл test добавить исполнение основного файла с визуализацией 
-- [ ] сделать подписи осей к графикам
+#### The program simulates motion of rigid body with fixed point
+
+## How to build and execute
+
+#### First of all, you have to clone the repository:
+
+```console
+$ git clone https://github.com/OAMichael/Lagrange-s-case-visualization.git
+```
+
+#### After that you are to type `make` being in folder Lagrange-s-case-visualization:
+
+```console
+$ make
+```
+#### And all you left to do is run the program:
+
+```console
+$ ./Main.exe
+```
 
 ## How to execute python script
 
@@ -20,7 +34,7 @@ Second case:
 chmod +x <filename>.py
 ./<filename>.py <args>
 ```
-ATTENTION. In the secon case the first line in your python script must be
+**ATTENTION**: In the second case the first line in your python script must be
 ```
 #!/usr/bin/env python3
 ```

@@ -1,4 +1,6 @@
 #include <GL/glut.h>
+#include <sys/types.h>
+#include <signal.h>
 #include <cmath>
 #include <algorithm>
 #include <vector>
@@ -120,8 +122,7 @@ void Keyboard(unsigned char Typped, int x, int y);
 void SpecKeyboard(int key, int x, int y);
 void Mouse(int Button, int State, int x, int y);
 void Reshape(int w, int h);
-void ReadParam(void);
-void AssignInitials(void);
+void AssignInitials(int argc, char* argv[]);
 const PhaseVector F(const PhaseVector& Vec);
 
 //====================================================INITIAL CONDITIONS====================================================
@@ -130,11 +131,11 @@ GLdouble M = 0.5;               // Mass
 GLdouble L = 2;                 // Distance to center of mass
 GLdouble A = 15;                // A moment of inertia
 GLdouble C = 30;                // C moment of inertia
-GLdouble psi_0 = 0;             // Initial psi
 GLdouble theta_0 = M_PI / 3.0;  // Initial theta
+GLdouble psi_0 = 0;             // Initial psi
 GLdouble phi_0 = 0.0;           // Initial phi
-GLdouble psi_dot_0 = 0.75;      // Initial psi dot
 GLdouble theta_dot_0 = 0.1;     // Initial theta_dot
+GLdouble psi_dot_0 = 0.75;      // Initial psi dot
 GLdouble phi_dot_0 = 0.75;      // Initial phi_dot
 
 //========================================================CONSTANTS=========================================================
@@ -145,7 +146,6 @@ const GLdouble g = 9.81;        // Gravitational acceleration
 
 GLdouble Time = 0;
 GLdouble dt = 1 / 100.0;
-long long unsigned WriteCount = 0;
 GLfloat  RotAngleX = 10.0;
 GLfloat  RotAngleY = 0.0;
 GLfloat  RotAngleZ = 0.0;
@@ -164,10 +164,9 @@ std::vector<Point> Trace;
 using VecIter = typename std::vector<Point>::iterator;
 
 
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
-    ReadParam();
-    AssignInitials();
+    AssignInitials(argc, argv);
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
@@ -218,7 +217,7 @@ void Keyboard(unsigned char Typped, int x, int y)
     switch(Typped)
     {
         case 'q':
-        case KEY_ESCAPE:        exit(0);
+        case KEY_ESCAPE:        kill(0, SIGKILL);             exit(0);
 
         case KEY_SPACE:         Trace.clear();      break;
 
@@ -502,8 +501,6 @@ void Timer(int)
             theta_min = State.theta;
     }
 
-    std::cout << "Thing = " << abs(State.p * cos(State.phi) - State.q * sin(State.phi)) << std::endl;
-
 //=================================================PROCEEDING THE QUANTITIES================================================
 
     // Using Runge-Kutta's method
@@ -520,26 +517,19 @@ void Timer(int)
     // Using Euler method
     //State = State + dt * F(State);
 
-    //if(WriteCount % 100 == 99)
-    //{
-        std::ofstream Data;
-        Data.open("data.txt", std::ios::app | std::ios::out);
-        Data << Time << " " << State.theta << " " << State.psi << " " << State.phi << " " << State.p << " " << State.q << " " << State.r << std::endl;
-        Data.close();
-    //}
-    ++WriteCount;
+    std::ofstream Data;
+    Data.open("data.txt", std::ios::app | std::ios::out);
+    Data << Time << " " << State.theta << " " << State.psi << " " << State.phi << " " << State.p << " " << State.q << " " << State.r << std::endl;
+    Data.close();
 
     std::cout << "State:\n" << State;
+
 //==========================================================================================================================
 
 
     Point A{ MainSphereR * sin(State.theta) * cos(State.psi),
              MainSphereR * cos(State.theta),
              MainSphereR * sin(State.theta) * sin(State.psi) };
-
-
-    //if(Trace.size() > 1000)
-      //  Trace.pop_back();
 
     Trace.insert(Trace.begin(), A);
 
@@ -577,37 +567,22 @@ void DrawVector(Vector& Vec, Point& Start, GLfloat Thickness, Color& Col)
     return;
 }
 
-
-void ReadParam(void)
+void AssignInitials(int argc, char* argv[])
 {
-    std::cout << "Enter parameters of body and initial conditions" << std::endl;
-    std::cout << "Mass: ";
-    std::cin >> M;
-    std::cout << "L: ";
-    std::cin >> L;
-    std::cout << "A: ";
-    std::cin >> A;
-    std::cout << "C: ";
-    std::cin >> C;
-    std::cout << "psi_0: ";
-    std::cin >> psi_0;
-    std::cout << "theta_0: ";
-    std::cin >> theta_0;
-    std::cout << "phi_0: ";
-    std::cin >> phi_0;
-    std::cout << "psi_dot_0: ";
-    std::cin >> psi_dot_0;
-    std::cout << "theta_dot_0: ";
-    std::cin >> theta_dot_0;
-    std::cout << "phi_dot_0: ";
-    std::cin >> phi_dot_0;
+    if(argc > 1)
+    {
+        M = atof(argv[1]);
+        L = atof(argv[2]);
+        A = atof(argv[3]);
+        C = atof(argv[4]);
+        theta_0 = atof(argv[5]);
+        psi_0 = atof(argv[6]);
+        phi_0 = atof(argv[7]);
+        theta_dot_0 = atof(argv[8]);
+        psi_dot_0 = atof(argv[9]);
+        phi_dot_0 = atof(argv[10]);
+    }
 
-    return;
-}
-
-
-void AssignInitials(void)
-{
     State.theta = theta_0;
     State.psi   = psi_0;
     State.phi   = phi_0;
