@@ -2,6 +2,13 @@
 
 ### This repository created by [Pavel Filippenko](https://github.com/pavel-collab) and [Mikhail Ovsiannikov](https://github.com/OAMichael).
 
+### Our tasks this moment.
+- [ ] сдеать flock в c++ файле
+- [ ] по максимуму синхронизавать исполнение основного файла и .py файла
+- [ ] в файле test добавить корректное завершение дочерних процессов
+- [ ] в файл test добавить исполнение основного файла с визуализацией 
+- [ ] сделать подписи осей к графикам
+
 ## How to execute python script
 
 You have two ways to execute python code on your computer. First case:

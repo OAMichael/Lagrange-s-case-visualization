@@ -20,31 +20,6 @@ void handler(int signum) {
 
 int main(int argc, char* argv[]) {
 
-    // // Буфер в который будет помещен путь
-    // // к текущей директории 
-    // char PathName[PATH_MAX]; 
-    // // Определяем путь к текущей директории  
-    // if (readlink("/proc/self/exe", PathName, PATH_MAX) == -1) {
-    //     perror("readlink");
-    //     return -1;
-    // }
-
-    // //! отладка
-    // #ifdef DEBUG
-    // printf("current path: %s\n", PathName);
-    // #endif
-
-    // char* PythonExecutable = strcat(PathName, "Plot.py");
-    // if (PythonExecutable == NULL) {
-    //     perror("strcat");
-    //     return -1;
-    // }
-
-    // //! отладка
-    // #ifdef DEBUG
-    // printf("current python plot executable file: %s\n", PythonExecutable);
-    // #endif
-
     float M = 0.5;
     float L = 2;
     float A = 15;
@@ -125,11 +100,11 @@ int main(int argc, char* argv[]) {
     if (signal(SIGINT, handler) == SIG_ERR){
         perror("signal(SIGINT)");
         return -1;
-    } // ^c
+    }
     if (signal(SIGTERM, handler)) {
         perror("signal(SIGTERM)");
         return -1;
-    } // завершение работы
+    }
     // --------------------------------------------------------------------------------------------
 
     // форкаем дочерние процессы (по количеству запрошеных параметров)
@@ -141,8 +116,9 @@ int main(int argc, char* argv[]) {
             exit(EXIT_FAILURE);
             break;
         case 0: /* child */
+            // запускаем файл с графиками
             execl(
-                "/home/pavel/workfile/Other_things/Lagrange-s-case-visualization/Plot.py",
+                "Plot.py",
                 "/Plot.py",
                 parametrs[i],
                 NULL
