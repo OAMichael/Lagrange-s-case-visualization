@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from collections import deque
 from os import close, write, read
 
@@ -78,7 +78,7 @@ def GiveParam():
 
 # function for anomation -- update old values by new parametrs from data file
 def UpdateParam(d_param):
-    time.append(time[-1] + 1)  # update data
+    time.append(time[-1] + 0.01)  # update data
     param.append(float(d_param))
     # print("current time: %d" %(time[-1]))
     # print("curent phi: %f" %float(d_param))
@@ -97,7 +97,7 @@ if __name__ == "__main__":
             fig, # фигура, где отображается анимация
             func = UpdateParam, # функция обновления текущего кадра
             frames = GiveParam, # параметр, меняющийся от кадра к кадру
-            interval = 100, # задержка между кадрами (мс)
+            interval = 10, # задержка между кадрами (мс)
             blit = False, # использовать ли двойную буфферизацию
             repeat = True # зацикливать ли анимацию
         )
