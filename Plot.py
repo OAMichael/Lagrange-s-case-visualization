@@ -22,12 +22,12 @@ def switch_demo(argument):
 # switcher for plot title
 def switch_Plot_Title(argument):
     switcher = {
-        "Phi": r'График зависимости $\varphi$ от t',    "phi": r'График зависимости $\varphi$ от t',
-        "Psi": r'График зависимости $\psi$ от t',       "psi": r'График зависимости $\psi$ от t',
-        "Theta": r'График зависимости $\theta$ от t',   "theta": r'График зависимости $\theta$ от t',
-        "p": r'График зависимости $\omega_1$ от t',     "P": r'График зависимости $\omega_1$ от t',
-        "q": r'График зависимости $\omega_2$ от t',     "Q": r'График зависимости $\omega_2$ от t',
-        "r": r'График зависимости $\omega_3$ от t',     "R": r'График зависимости $\omega_3$ от t'
+        "Phi": r'$\varphi(t)$',    "phi": r'$\varphi(t)$',
+        "Psi": r'$\psi(t)$',       "psi": r'$\psi(t)$',
+        "Theta": r'$\theta(t)$',   "theta": r'$\theta(t)$',
+        "p": r'$\omega_1(t)$',     "P": r'$\omega_1(t)$',
+        "q": r'$\omega_2(t)$',     "Q": r'$\omega_2(t)$',
+        "r": r'$\omega_3(t)$',     "R": r'$\omega_3(t)$'
     }
     return switcher.get(argument, "default")
 
@@ -52,7 +52,7 @@ print(argv[0])
 # select the displayed parameter
 param_num = switch_demo(argv[1])
 if param_num == None:
-    print("Invalid param value\n")
+    #print("Invalid param value\n")
     exit(1)
 
 PlotTitle = switch_Plot_Title(argv[1])

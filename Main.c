@@ -8,7 +8,7 @@
 #include <signal.h>
 #include <limits.h>  //For PATH_MAX
 
-#define DEBUG
+//#define DEBUG
 
 // Signal handler
 volatile int cought_signum = -1;
